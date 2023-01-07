@@ -16,10 +16,10 @@
         new Chart(ctx, {
           type: 'bar',
           data: {
-            labels: [{% for data in data %}'{{data}}',{%endfor%}],
+            labels: [{% for data in dataa %}'{{data}}',{%endfor%}],
             datasets: [{
               label: '# of Votes',
-              data: [],
+              data: [{% for data in data %}{{data}},{%endfor%}],
               borderWidth: 1
             }]
           },
