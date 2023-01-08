@@ -7,13 +7,23 @@
     <div>
         <canvas id="myChart"></canvas>
       </div>
-      
+      <div>
+        <canvas id="myChart2"></canvas>
+      </div>
+      <div id="selector" class="" >
+        From:<input type="date" id="fromDate" >
+        To:<input type="date" id="toDate" >
+        <button  id="submit-btn">Submit</button>
+    </div>  
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+  
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       
+       
       <script>
+
         const ctx = document.getElementById('myChart');
-      
-        new Chart(ctx, {
+        var chart = new Chart(ctx, {
           type: 'bar',
           data: {
             labels: [{% for data in dataa %}'{{data}}',{%endfor%}],
@@ -31,7 +41,76 @@
             }
           }
         });
-      </script>
+        chart.render();
+
+        // get min date from chart
+        var minDate = chart.data.labels[0];
+        var maxDate= chart.data.labels[chart.data.labels.length - 1];
+        
+        function parseDateFromString(params) {
+          var parts = params.split('-'); 
+          //  paramms = "2022-08 -06"  
+          //  parts  =  ["2022", "", "06"]       
+          var mydate = new Date(parts[0], parts[1] - 1, parts[2]); 
+          return mydate.getTime();   
+        }
+        $('#fromDate').val(minDate);
+        $('#toDate').val(maxDate);
+        minDate = parseDateFromString(minDate);
+        maxDate = parseDateFromString(maxDate);
+
+
+        //  changge selector value
+        $("#submit-btn").click( () => {
+
+          var  fromDate =  $('#fromDate').val();
+          var toDate = $('#toDate').val();
+          if( fromDate > toDate) {
+            alert('Unexpected error');
+            window.location.reload();
+          } else {
+            var newLabels = chart.data.labels.filter((label) => {           
+              return (label) >= fromDate  &&  (label) <= toDate;
+            });
+            console.log(newLabels)
+            var newData = chart.data.datasets[0].data.filter((data,index)=>{
+              return index >= chart.data.labels.indexOf(fromDate)  &&  index  <=  chart.data.labels.indexOf(toDate);              
+            });
+            console.log(newData)
+            chart.data.labels = newLabels;
+            chart.data.datasets[0].data = newData;
+            chart.update();
+          }
+
+        });
+
+
+            </script>
+
+            <script>
+
+              const ctx = document.getElementById('myChart2');
+              var chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                  labels: [{% for data in dataa %}'{{data}}',{%endfor%}],
+                  datasets: [{
+                    label: '# of Votes',
+                    data: [{% for data in data %}{{data}},{%endfor%}],
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  scales: {
+                    y: {
+                      beginAtZero: true
+                    }
+                  }
+                }
+              });
+              chart.render();
+      
+                  </script>
       
 </div>
 {% endblock %}
