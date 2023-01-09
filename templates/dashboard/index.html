@@ -89,7 +89,7 @@
 
             <script>
 
-              const ctx = document.getElementById('myChart2');
+              const ctx = document.getElementById('myChart');
               var chart = new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -100,16 +100,18 @@
                     borderWidth: 1
                   }]
                 },
-                options: {
+                options = {{ 
+                  resposive: true,
+                  maintainAspectRatio: true,
                   scales: {
                     y: {
-                      beginAtZero: true
+                      min: 0,
+                      beginAtZero: true          
                     }
-                  }
-                }
-              });
+                  }      
+                }} 
               chart.render();
-      
+
                   </script>
       
 </div>
