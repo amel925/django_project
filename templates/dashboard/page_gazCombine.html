@@ -3,7 +3,8 @@
 
 
 {% block content %}  
-
+<p class="font-weight-bold">Consommation quotidienne de gaz des Centrales à Cycle Combiné Gaz</p>
+    
     <div style="width: 800px;">
         <canvas id="myChart"></canvas>
       </div>
@@ -26,7 +27,7 @@
           data: {
             labels: [{% for data in dataa %}'{{data}}',{%endfor%}],
             datasets: [{
-              label: "Consommation quotidienne de gaz des Centrales à Cycle Combiné Gaz",
+              label: "Consommation des Centrales à Gaz",
               data: [{% for data in data %}{{data}},{%endfor%}],
               borderWidth: 1
             }]
