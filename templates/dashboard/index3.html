@@ -4,8 +4,7 @@
 
 {% block content %}  
 
-<p class="font-weight-bold">Production horaire provisoire de biométhane des sites d'injection raccordés au réseau de transport de gaz en France</p>
-    <div style="width: 800px;" >
+    <div style="width: 800px;">
         <canvas id="myChart"></canvas>
       </div>
 
@@ -27,7 +26,7 @@
           data: {
             labels: [{% for data in dataa %}'{{data}}',{%endfor%}],
             datasets: [{
-              label: "Production de biométhane",
+              label: "Consommation quotidienne de gaz des Centrales à Cycle Combiné Gaz",
               data: [{% for data in data %}{{data}},{%endfor%}],
               borderWidth: 1
             }]

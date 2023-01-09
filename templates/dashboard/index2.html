@@ -3,9 +3,8 @@
 
 
 {% block content %}  
-
-<p class="font-weight-bold">Production horaire provisoire de biométhane des sites d'injection raccordés au réseau de transport de gaz en France</p>
-    <div style="width: 800px;" >
+<p class="font-weight-bold">Consommation d'électricité des grandes Métropoles françaises temps réel</p>
+    <div style="width: 800px;">
         <canvas id="myChart"></canvas>
       </div>
 
@@ -27,7 +26,7 @@
           data: {
             labels: [{% for data in dataa %}'{{data}}',{%endfor%}],
             datasets: [{
-              label: "Production de biométhane",
+              label: "Consommation d'électricité",
               data: [{% for data in data %}{{data}},{%endfor%}],
               borderWidth: 1
             }]
