@@ -1,6 +1,3 @@
-# connect to mongodb
-
-#import des bibliothèques dont nous avons besoin:
 #json permet de créer et de lire des données au format json
 import json
 #import de la classe utilisée comme objet de retour d'une vue Django
@@ -19,14 +16,21 @@ from project_linux.services import get_database
 
 
 
-
-#####definition de la fonction home  
+"""
+definition de la fonction home qui permet d'afficher la page d'accueil
+parametre: request
+return : la page d'acceuil du site
+"""
 def home(request):
     return render(request, 'dashboard/home.html')
 
 
-
-#definition de la fonction gaz_function
+"""
+definition de la fonction gaz_function qui permet d'importer les données depuis mongoDB 
+dans la collection 'test_collection' representant les données de la production du gaz
+parametre: request
+return : la page de la production du gaz 
+"""
 def gaz_function(request):
     #appel de la fonction get_database()
     dbname = get_database()
@@ -48,6 +52,14 @@ def gaz_function(request):
     return render(request, 'dashboard/page_gaz.html',context)
 
 
+"""
+
+definition de la fonction electricity_function qui permet d'importer les données depuis mongoDB
+dans la collection 'test_collection2' representant les données de la consommation d'electricite
+parametre: request
+return : la page de la consommation d'electricite
+
+"""
 def electricity_function(request):
 
     dbname = get_database()
@@ -82,6 +94,13 @@ def electricity_function(request):
     return render(request, 'dashboard/page_electricite.html',context)
 
 
+"""
+definition de la fonction gazCombine_function qui permet d'importer les données depuis mongoDB
+dans la collection 'test_collection3' representant les données de la consommation de gaz du biométhane
+parametre: request
+return : la page de la consommation de gaz du biométhane
+
+"""
 def gazCombine_function(request):
 
     dbname = get_database()

@@ -23,6 +23,8 @@
       <script>
 
         const ctx = document.getElementById('myChart');
+        // Chart : est une fonction qui permet d'afficher le graphe et de récupérer les données depuis le backend
+        // pour apres les afficher
         var chart = new Chart(ctx, {
           type: 'bar',
           data: {
@@ -60,7 +62,7 @@
         maxDate = parseDateFromString(maxDate);
 
 
-        //  changge selector value
+        //  change selector value
         $("#submit-btn").click( () => {
 
           var  fromDate =  $('#fromDate').val();

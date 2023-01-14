@@ -5,6 +5,10 @@ import requests
 #  in a Database.
 from pymongo import MongoClient
 
+"""
+fonction qui permet de se connecter à la base de données test dans MongoDB
+
+"""
 def get_database():
     # Provide the mongodb atlas url to connect python to mongodb using pymongo   
     CONNECTION_STRING = "mongodb+srv://linux_site_web:o0uh950JLuOCL8Ww@cluster0.3iix0gl.mongodb.net/test?retryWrites=true&w=majority"
