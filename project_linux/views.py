@@ -1,18 +1,34 @@
 # connect to mongodb
+
+#import des bibliothèques dont nous avons besoin:
+#json permet de créer et de lire des données au format json
 import json
+#import de la classe utilisée comme objet de retour d'une vue Django
 from django.http import HttpResponse
+#import de la classe MongoClient qui permet d'établir des connexions au serveur MongoDB
 from pymongo import MongoClient
+#import du module requests qui nous permet d'envoyer des requêtes HTTP à l'aide de Python.
 import requests
+#import de la fonction render qui permet de renvoyer un objet HttpResponse du modèle donné, rendu avec le contexte donné.
 from django.shortcuts import render
+#import du module datetime qui permet la manipulation de dates et d'heures.
 import datetime 
+#import de la fonction get_database du fichier services
 from project_linux.services import get_database
 
 
 
+
+
+#####definition de la fonction home  
 def home(request):
     return render(request, 'dashboard/home.html')
-    
+
+
+
+#definition de la fonction gaz_function
 def gaz_function(request):
+    #appel de la fonction get_database()
     dbname = get_database()
 
     data=dbname.test_collection.find()
@@ -62,6 +78,7 @@ def electricity_function(request):
         'data':data1,
         'dataa':data2,
     }
+    print(context)
     return render(request, 'dashboard/page_electricite.html',context)
 
 

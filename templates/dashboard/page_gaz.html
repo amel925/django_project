@@ -3,17 +3,19 @@
 
 
 {% block content %}  
-
-<p class="font-weight-bold">Production horaire provisoire de biométhane des sites d'injection raccordés au réseau de transport de gaz en France</p>
-    <div style="width: 800px;" >
+<div class="text-center chart-bg">
+<p class="mt-5 lead">Production horaire provisoire de biométhane des sites d'injection raccordés au réseau de transport de gaz en France</p>
+    <div class="chart">
         <canvas id="myChart"></canvas>
       </div>
 
-      <div id="selector" class="" >
-        From:<input type="date" id="fromDate" >
-        To:<input type="date" id="toDate" >
-        <button  id="submit-btn">Submit</button>
+      <div id="selector" class="d-flex align-items-center flex-column" >
+        De :<input type="date" id="fromDate" class="form-control w-25">
+        À :<input type="date" id="toDate" class="form-control w-25">
+        <button class="btn btn-primary btn-lg mt-2" id="submit-btn">Charger</button>
     </div>  
+
+  </div>
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
   
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

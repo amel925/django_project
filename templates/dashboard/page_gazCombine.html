@@ -1,92 +1,95 @@
 {% extends 'partials/base.html' %}
-{% block title%}dashboard{% endblock %}  
+{% block title%}dashboard{% endblock %}
 
 
-{% block content %}  
-<p class="font-weight-bold">Consommation quotidienne de gaz des Centrales à Cycle Combiné Gaz</p>
-    
-    <div style="width: 800px;">
-        <canvas id="myChart"></canvas>
-      </div>
+{% block content %}
+<div class="text-center">
+  <p class="mt-5 lead">Consommation quotidienne de gaz des Centrales à Cycle Combiné Gaz</p>
 
-      <div id="selector" class="" >
-        From:<input type="date" id="fromDate" >
-        To:<input type="date" id="toDate" >
-        <button  id="submit-btn">Submit</button>
-    </div>  
-    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-  
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      
-       
-      <script>
+  <div class="chart">
+    <canvas id="myChart"></canvas>
+  </div>
 
-        const ctx = document.getElementById('myChart');
-        var chart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: [{% for data in dataa %}'{{data}}',{%endfor%}],
-            datasets: [{
-              label: "Consommation des Centrales à Gaz",
-              data: [{% for data in data %}{{data}},{%endfor%}],
-              borderWidth: 1
+  <div id="selector" class="d-flex align-items-center flex-column" >
+    De :<input type="date" id="fromDate" class="form-control w-25">
+    À :<input type="date" id="toDate" class="form-control w-25">
+    <button class="btn btn-primary btn-lg mt-2" id="submit-btn">Charger</button>
+</div>  
+</div>
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+  crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+
+  const ctx = document.getElementById('myChart');
+  var chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [{% for data in dataa %}'{{data}}',{% endfor %}],
+  datasets: [{
+    label: "Consommation des Centrales à Gaz",
+    data: [{% for data in data %}{{ data }}, {% endfor %}],
+    borderWidth: 1
             }]
           },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
         });
-        chart.render();
+  chart.render();
 
-        // get min date from chart
-        var minDate = chart.data.labels[0];
-        var maxDate= chart.data.labels[chart.data.labels.length - 1];
-        
-        function parseDateFromString(params) {
-          var parts = params.split('-'); 
-          //  paramms = "2022-08 -06"  
-          //  parts  =  ["2022", "", "06"]       
-          var mydate = new Date(parts[0], parts[1] - 1, parts[2]); 
-          return mydate.getTime();   
-        }
-        $('#fromDate').val(minDate);
-        $('#toDate').val(maxDate);
-        minDate = parseDateFromString(minDate);
-        maxDate = parseDateFromString(maxDate);
+  // get min date from chart
+  var minDate = chart.data.labels[0];
+  var maxDate = chart.data.labels[chart.data.labels.length - 1];
 
-
-        //  changge selector value
-        $("#submit-btn").click( () => {
-
-          var  fromDate =  $('#fromDate').val();
-          var toDate = $('#toDate').val();
-          if( fromDate > toDate) {
-            alert('Unexpected error');
-            window.location.reload();
-          } else {
-            var newLabels = chart.data.labels.filter((label) => {           
-              return (label) >= fromDate  &&  (label) <= toDate;
-            });
-            console.log(newLabels)
-            var newData = chart.data.datasets[0].data.filter((data,index)=>{
-              return index >= chart.data.labels.indexOf(fromDate)  &&  index  <=  chart.data.labels.indexOf(toDate);              
-            });
-            console.log(newData)
-            chart.data.labels = newLabels;
-            chart.data.datasets[0].data = newData;
-            chart.update();
-          }
-
-        });
+  function parseDateFromString(params) {
+    var parts = params.split('-');
+    //  paramms = "2022-08 -06"  
+    //  parts  =  ["2022", "", "06"]       
+    var mydate = new Date(parts[0], parts[1] - 1, parts[2]);
+    return mydate.getTime();
+  }
+  $('#fromDate').val(minDate);
+  $('#toDate').val(maxDate);
+  minDate = parseDateFromString(minDate);
+  maxDate = parseDateFromString(maxDate);
 
 
-            </script>
+  //  changge selector value
+  $("#submit-btn").click(() => {
 
-           
-      
+    var fromDate = $('#fromDate').val();
+    var toDate = $('#toDate').val();
+    if (fromDate > toDate) {
+      alert('Unexpected error');
+      window.location.reload();
+    } else {
+      var newLabels = chart.data.labels.filter((label) => {
+        return (label) >= fromDate && (label) <= toDate;
+      });
+      console.log(newLabels)
+      var newData = chart.data.datasets[0].data.filter((data, index) => {
+        return index >= chart.data.labels.indexOf(fromDate) && index <= chart.data.labels.indexOf(toDate);
+      });
+      console.log(newData)
+      chart.data.labels = newLabels;
+      chart.data.datasets[0].data = newData;
+      chart.update();
+    }
+
+  });
+
+
+</script>
+
+
+
 </div>
 {% endblock %}
