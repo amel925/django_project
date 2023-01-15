@@ -23,7 +23,7 @@ url="https://odre.opendatasoft.com/api/records/1.0/search/?dataset=prod-nat-gaz-
 # Consommation d'électricité des grandes Métropoles françaises temps réel
 url2="https://odre.opendatasoft.com/api/records/1.0/search/?dataset=eco2mix-metropoles-tr&q=&rows=10000&sort=-date&facet=libelle_metropole&timezone=Europe%2FParis"
 # Consommation quotidienne de gaz des Centrales à Cycle Combiné Gaz (zone GRTgaz)
-url3="https://odre.opendatasoft.com/api/records/1.0/search/?dataset=cccg-horaire-nat&q=&rows=9000&sort=jourcalendaire&facet=jourcalendaire&timezone=Europe%2FParis"
+url3="https://odre.opendatasoft.com/api/records/1.0/search/?dataset=cccg-horaire-nat&q=&rows=10000&sort=jourcalendaire&facet=jourcalendaire&timezone=Europe%2FParis"
     
 
 """ 

@@ -40,11 +40,10 @@ def gaz_function(request):
     data2=[]
     i=0
     for d in data:
-        if i==1900:
-            data1.append(d["fields"]["prod_journaliere_mwh_pcs"])
-            data2.append(d["fields"]["journee_gaziere"])
-        else:
-            i=i+1
+        data1.append(d["fields"]["prod_journaliere_mwh_pcs"])
+        data2.append(d["fields"]["journee_gaziere"])
+
+
     context={
         'data':data1,
         'dataa':data2,

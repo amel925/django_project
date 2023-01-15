@@ -1,43 +1,18 @@
-<!-- <nav class="navbar bg-light h-100">
-    <div class="container" >
-        <div class="container-fluid">
-        
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Accueil</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'gaz_function' %}">Gaz</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'electricity_function' %}">Elecricité</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'gazCombine_function' %}">Gaz combiné</a>
-            </li>
-
-            </ul>
-        </div>
-        </div>
-    </div>
-  </nav> -->
-
-  <nav class="navbar navbar-dark">
-    <div class="container-fluid">
-      <ul class="navbar-nav">
-        <li class="nav-item mt-3">
-          <a class="nav-link" href="{% url 'home' %}">Accueil</a>
+<nav class="navbar navbar-dark">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <li class="nav-item mt-3">
+        <a class="nav-link" href="{% url 'home' %}">Accueil</a>
+      </li>
+      <li class="nav-item mt-3">
+        <a class="nav-link" href="{% url 'gaz_function' %}">Production du Gaz biométhane</a>
+      </li>
+      <li class="nav-item mt-3">
+        <a class="nav-link" href="{% url 'electricity_function' %}">Consommation d'Elecricité</a>
+      </li>
+      <li class="nav-item mt-3">
+          <a class="nav-link" href="{% url 'gazCombine_function' %}">Consommation de Gaz par les centrales à cylce combiné</a>
         </li>
-        <li class="nav-item mt-3">
-          <a class="nav-link" href="{% url 'gaz_function' %}">Gaz</a>
-        </li>
-        <li class="nav-item mt-3">
-          <a class="nav-link" href="{% url 'electricity_function' %}">Elecricité</a>
-        </li>
-        <li class="nav-item mt-3">
-            <a class="nav-link" href="{% url 'gazCombine_function' %}">Gaz Combiné</a>
-          </li>
-      </ul>
-    </div>
-  </nav>
+    </ul>
+  </div>
+</nav>

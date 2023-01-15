@@ -41,3 +41,58 @@ margin: auto;
     background-color: #04104d;
     color: aliceblue;
 }
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+h1{
+    font-size: 4vw;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+
+h4{margin-top: 150px;}
+
+p{
+    margin-top: 60px;
+    margin-left: 40px;
+    margin-bottom: 30px;
+
+}
+
+ul{
+    margin-left: 70px;
+}
+
+
+.contenu{
+    flex: 1 0 auto;
+}
+
+.contenu p {
+    padding: 5vw 10vw;
+    text-align: justify;
+
+}
+
+footer{
+    flex-shrink: 0;
+    border-top: 1px dashed #000;
+    width: 100%;
+
+}
+
+.contenu-footer{
+    width: 1200 px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 20px;
+    padding: 50px 0 100px;
+}
+

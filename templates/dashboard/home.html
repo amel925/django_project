@@ -4,10 +4,58 @@
 
 
 {% block content %}  
+  <head>
+    <link rel="stylesheet" href="{% static 'mystyle/style.css' %}">
 
+  </head>
+
+  <body>
+    <div>
+      <h1 align="center" class="grand_titre">TABLEAU DE BORD ENERGIES RENOUVELABLES FRANCE</h1>
+      <p>
+        Ce tableau de bord est destiné à la visualisation de ce qui suit:
+        <ul>
+          <li> <a href="{% url 'gaz_function' %}"> Production de biométhane des sites d'injection raccordés au réseau de transport de gaz :</a> Dont le producteur est GRTgaz et Terégaz.</li>
+          <li><a href="{% url 'electricity_function' %}"> Consommation d’électricité des grandes métropoles :</a> Dont le producteur est RTE</li>
+          <li><a href="{% url 'gazCombine_function' %}"> Consommation quotidienne de gaz des centrales à cycle combiné gaz :</a> Dont le producteur est GRTgaz</li>
+        </ul>
+
+        
+      </p>
+      <p>Un rapport détaillant ce travail est mit à disposition <a href="{% static 'rapport_linux.docx' %}"> Download </a>.</p>
+
+    </div>
+
+
+    <footer>
+      <h4 align="center">Créatrices du DASHBOARD :</h4>
+
+      <div class="contenu-footer">
+        <div class="bloc footer-services">
+          <p> <img src="..\icones\woman.png" alt="">👩 Amel NAIT AMER</p>
+        </div>
+
+        <div class="bloc footer-services">
+          <p> 👩 Lydia GUISSI</p>
+        </div>
+
+        <div class="bloc footer-services">
+          <p> 👩 Salma TALANTIKITE</p>
+        </div>
+
+
+      </div>
+
+    </footer>
+
+
+  </body>
+  
 
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
   
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 {% endblock %}
+
+
